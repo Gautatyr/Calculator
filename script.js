@@ -125,3 +125,16 @@ const round = function(num){
 
 const buttonDot = document.querySelector(".dot");
 buttonDot.addEventListener("click",function(){buttonDot.disabled = true;})
+
+const BUTTONS = document.querySelectorAll("button");
+BUTTONS.forEach(button => {
+    button.addEventListener("mouseover", function(){
+        button.style.backgroundColor = "Thistle";
+    })
+})
+
+BUTTONS.forEach(button => {
+    button.addEventListener("mouseout", function(){
+        button.style.backgroundColor = "white";
+    })
+});
