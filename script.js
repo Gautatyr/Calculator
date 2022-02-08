@@ -10,8 +10,8 @@ function substract(a,b){
 
 //division
 function divide(a,b){
-    if(a === 0 || b === 0){
-        return "ERROR: You can't divide by 0"
+    if(a === "0" || b === "0"){
+        alert("dividing by 0? Interesting... We don't do that here.");
     }
     return a / b;
 }
@@ -68,6 +68,7 @@ OPERATORSBUTTONS.forEach(button =>{
         }else{
             secondNumber = getDisplay();
             let result = operate(operator,firstNumber,secondNumber);
+            result = round(result);
             operator = button.textContent;
             setDisplay(result);
             firstNumber = result;
@@ -81,7 +82,9 @@ OPERATORSBUTTONS.forEach(button =>{
 const EQUALSBUTTON = document.querySelector(".equals");
 EQUALSBUTTON.addEventListener("click", function(){
     secondNumber = getDisplay();
-    setDisplay(operate(operator,firstNumber,secondNumber));
+    let result = operate(operator,firstNumber,secondNumber);
+    result = round(result);
+    setDisplay(result);
     operator = "";
     isContinuous = true;
 })
@@ -105,5 +108,13 @@ const setDisplay = function(arg){
     DISPLAY.textContent = arg;
 }
 
-
-
+//Rounds the number depending on the decimals
+//If num has no more than 2 decimals it returns num unchanged
+//If num has more than 2 decimals it rounds it to 2 decimals
+const round = function(num){
+    if((num * 100) % 1 === 0){
+        return num;
+    }else{
+        return (Math.round(num*100))/100;
+    }
+}
