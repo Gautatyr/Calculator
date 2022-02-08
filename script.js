@@ -65,6 +65,7 @@ OPERATORSBUTTONS.forEach(button =>{
             firstNumber = getDisplay();
             //setDisplay("");
             isContinuous = true;
+            buttonDot.disabled = false;
         }else{
             secondNumber = getDisplay();
             let result = operate(operator,firstNumber,secondNumber);
@@ -74,6 +75,7 @@ OPERATORSBUTTONS.forEach(button =>{
             firstNumber = result;
             secondNumber = "";
             isContinuous = true;
+            buttonDot.disabled = false;
         }
     })
 })
@@ -87,6 +89,7 @@ EQUALSBUTTON.addEventListener("click", function(){
     setDisplay(result);
     operator = "";
     isContinuous = true;
+    buttonDot.disabled = false;
 })
 
 const CLEARBUTTON = document.querySelector(".clear");
@@ -95,6 +98,7 @@ CLEARBUTTON.addEventListener("click", function(){
     operator ="";
     firstNumber="";
     secondNumber="";
+    buttonDot.disabled = false;
 })
 
 
@@ -118,3 +122,6 @@ const round = function(num){
         return (Math.round(num*100))/100;
     }
 }
+
+const buttonDot = document.querySelector(".dot");
+buttonDot.addEventListener("click",function(){buttonDot.disabled = true;})
